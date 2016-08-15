@@ -16,9 +16,10 @@ func Serve() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer api.Close()
 
 	runtime.GOMAXPROCS((runtime.NumCPU() * 2) + 1)
 
-	port := config.ServiceConfig.GetInt("app.port", 8100)
+	port := config.ServiceConfig.GetIntDefault("app.port", 8100)
 	http.ListenAndServe(fmt.Sprintf(":%d", port), api.service.Router)
 }

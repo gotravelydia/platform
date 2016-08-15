@@ -6,6 +6,8 @@ import (
 	"net/http"
 
 	"github.com/gotravelydia/platform/config"
+	"github.com/gotravelydia/platform/database"
+	"github.com/gotravelydia/platform/log"
 	"github.com/gotravelydia/platform/service"
 )
 
@@ -28,6 +30,7 @@ const (
 
 type API struct {
 	service *service.Service
+	db      *database.Database
 }
 
 func New() (*API, error) {
@@ -36,7 +39,22 @@ func New() (*API, error) {
 	// Initialize API Router.
 	api.initRouter()
 
+	// Initialize the database connection.
+	db, err := database.New()
+	if err != nil {
+		return nil, err
+	}
+
+	api.db = db
+
 	return api, nil
+}
+
+func (api *API) Close() {
+	err := api.db.Close()
+	if err != nil {
+		log.Error(err)
+	}
 }
 
 func (api *API) handler(h handleFunc, level authLevel) http.HandlerFunc {
@@ -49,7 +67,7 @@ func (api *API) handler(h handleFunc, level authLevel) http.HandlerFunc {
 func (api *API) initRouter() {
 	api.service = service.New(
 		AppServiceName,
-		config.ServiceConfig.GetString("app.version", "0.0.0"),
+		config.ServiceConfig.GetStringDefault("app.version", "0.0.0"),
 	)
 
 	userRoute := api.service.Router.PathPrefix("/v1/users").Subrouter()
