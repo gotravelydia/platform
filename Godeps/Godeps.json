@@ -6,18 +6,48 @@
 	],
 	"Deps": [
 		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.10.0-36-g08a8a7c",
+			"Rev": "08a8a7c27e3d058a8989316a850daad1c10bf4ab"
+		},
+		{
 			"ImportPath": "github.com/bitly/go-simplejson",
 			"Comment": "v0.5.0",
 			"Rev": "aabad6e819789e569bd6aabf444c935aa9ba1e44"
 		},
 		{
 			"ImportPath": "github.com/go-ini/ini",
-			"Comment": "v1.8.6",
-			"Rev": "afbd495e5aaea13597b5e14fe514ddeaa4d76fc3"
+			"Comment": "v1.21.0",
+			"Rev": "a2610b3a793cfa7fdf0b07038068af5ddc12aba1"
 		},
 		{
-			"ImportPath": "github.com/gorilla/mux",
-			"Rev": "9c068cf16d982f8bd444b8c352acbeec34c4fe5b"
+			"ImportPath": "github.com/gotravelydia/context",
+			"Comment": "v1.1-7-g08b5f42",
+			"Rev": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42"
+		},
+		{
+			"ImportPath": "github.com/gotravelydia/mux",
+			"Comment": "v1.1-27-g5da2fbd",
+			"Rev": "5da2fbd8802081f3711812cabcbd76922f29b51d"
+		},
+		{
+			"ImportPath": "github.com/ziutek/mymysql/godrv",
+			"Comment": "v1.5.4-15-g8787d55",
+			"Rev": "8787d5581eb63f3f3b447f40c13f8e69e73f1b58"
+		},
+		{
+			"ImportPath": "github.com/ziutek/mymysql/mysql",
+			"Comment": "v1.5.4-15-g8787d55",
+			"Rev": "8787d5581eb63f3f3b447f40c13f8e69e73f1b58"
+		},
+		{
+			"ImportPath": "github.com/ziutek/mymysql/native",
+			"Comment": "v1.5.4-15-g8787d55",
+			"Rev": "8787d5581eb63f3f3b447f40c13f8e69e73f1b58"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "833a04a10549a95dc34458c195cbad61bbb6cb4d"
 		}
 	]
 }

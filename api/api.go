@@ -42,6 +42,7 @@ func New() (*API, error) {
 	// Initialize the database connection.
 	db, err := database.New()
 	if err != nil {
+		log.Error(err)
 		return nil, err
 	}
 

@@ -5,10 +5,10 @@ run-api:
 	go install ./...
 	$(GOPATH)/bin/runner
 
-deploy-platform-prod:
+deploy-prod:
 	eb use platform-prod
 	eb deploy --verbose --timeout 20 platform-prod
 
-deploy-platform-staging:
+deploy-staging:
 	eb use platform-staging
 	eb deploy -v --timeout 20 platform-staging
