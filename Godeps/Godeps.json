@@ -1,6 +1,7 @@
 {
 	"ImportPath": "github.com/gotravelydia/platform",
-	"GoVersion": "go1.6",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
 	"Packages": [
 		"./..."
 	],
@@ -46,8 +47,24 @@
 			"Rev": "8787d5581eb63f3f3b447f40c13f8e69e73f1b58"
 		},
 		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "7394c112eae4dba7e96bfcfe738e6373d61772b4"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context/ctxhttp",
+			"Rev": "7394c112eae4dba7e96bfcfe738e6373d61772b4"
+		},
+		{
 			"ImportPath": "golang.org/x/sys/unix",
 			"Rev": "833a04a10549a95dc34458c195cbad61bbb6cb4d"
+		},
+		{
+			"ImportPath": "googlemaps.github.io/maps",
+			"Rev": "631178679102c5bcf6146a8d66379c19a7b8e36c"
+		},
+		{
+			"ImportPath": "googlemaps.github.io/maps/internal",
+			"Rev": "631178679102c5bcf6146a8d66379c19a7b8e36c"
 		}
 	]
 }
