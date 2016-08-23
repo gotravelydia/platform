@@ -15,14 +15,18 @@ func SetJsonContentType(w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 }
 
-func Success200(w http.ResponseWriter, payload []byte) {
+func OK(w http.ResponseWriter, payload []byte) {
 	SetJsonContentType(w)
 	w.WriteHeader(http.StatusOK)
 	w.Write(payload)
 }
 
-func Success200Empty(w http.ResponseWriter) {
+func OKEmpty(w http.ResponseWriter) {
 	w.WriteHeader(http.StatusOK)
+}
+
+func InternalServerError(w http.ResponseWriter, err error) {
+	writeError(w, http.StatusInternalServerError, err)
 }
 
 func NotFound(w http.ResponseWriter, r *http.Request) {

@@ -5,6 +5,7 @@ package api
 import (
 	"net/http"
 
+	"github.com/gotravelydia/platform/client/google"
 	"github.com/gotravelydia/platform/config"
 	"github.com/gotravelydia/platform/database"
 	"github.com/gotravelydia/platform/log"
@@ -16,7 +17,7 @@ const (
 	DefaultMaxFormMemory = 32 << 20 // 32 MB
 )
 
-type handleFunc func(w http.ResponseWriter, r *http.Request)
+type handleFunc func(w http.ResponseWriter, r *http.Request, ctx *Context)
 type authLevel int
 
 const (
@@ -29,26 +30,31 @@ const (
 )
 
 type API struct {
-	service *service.Service
-	db      *database.Database
+	service          *service.Service
+	db               *database.Database
+	googleMapsClient *google.GoogleMaps
 }
 
-func New() (*API, error) {
-	api := &API{}
+func New() (api *API, err error) {
+	api = &API{}
 
 	// Initialize API Router.
 	api.initRouter()
 
 	// Initialize the database connection.
-	db, err := database.New()
+	api.db, err = database.New()
 	if err != nil {
 		log.Error(err)
-		return nil, err
+		return
 	}
 
-	api.db = db
+	// Initialize Google Maps API client.
+	api.googleMapsClient, err = google.New()
+	if err != nil {
+		return
+	}
 
-	return api, nil
+	return
 }
 
 func (api *API) Close() {
@@ -61,7 +67,7 @@ func (api *API) Close() {
 func (api *API) handler(h handleFunc, level authLevel) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		r.ParseMultipartForm(DefaultMaxFormMemory)
-		h(w, r)
+		h(w, r, NewContext(api, r))
 	}
 }
 
@@ -71,6 +77,6 @@ func (api *API) initRouter() {
 		config.ServiceConfig.GetStringDefault("app.version", "0.0.0"),
 	)
 
-	userRoute := api.service.Router.PathPrefix("/v1/users").Subrouter()
-	userRoute.HandleFunc("/hello", api.handler(getNewToken, authLevelAnonymous)).Methods("GET", "POST")
+	searchRoute := api.service.Router.PathPrefix("/v1/search").Subrouter()
+	searchRoute.HandleFunc("/location", api.handler(searchLocation, authLevelAnonymous)).Methods("GET")
 }
