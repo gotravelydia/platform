@@ -22,9 +22,9 @@
 			"Rev": "a2610b3a793cfa7fdf0b07038068af5ddc12aba1"
 		},
 		{
-			"ImportPath": "github.com/gotravelydia/mux",
-			"Comment": "v1.1-27-g5da2fbd",
-			"Rev": "5da2fbd8802081f3711812cabcbd76922f29b51d"
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.1-21-gcf79e51",
+			"Rev": "cf79e51a62d8219d52060dfc1b4e810414ba2d15"
 		},
 		{
 			"ImportPath": "github.com/ziutek/mymysql/godrv",

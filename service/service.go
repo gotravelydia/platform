@@ -8,7 +8,7 @@ import (
 
 	"github.com/gotravelydia/platform/log"
 
-	"github.com/gotravelydia/mux"
+	"github.com/gorilla/mux"
 )
 
 type Service struct {

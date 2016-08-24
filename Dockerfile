@@ -48,7 +48,8 @@ ADD . /go/src/github.com/gotravelydia/platform
 RUN go get -u github.com/tools/godep
 
 # Install all the dependencies defined in Godeps.json.
-RUN godep restore -v
+RUN go get github.com/gorilla/context
+RUN godep restore
 
 # Build the platform binary inside the container.
 RUN go install ./...

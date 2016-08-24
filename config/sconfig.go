@@ -11,7 +11,7 @@ import (
 )
 
 const DefaultEnv = "staging"
-const ConfigPath = ".cfg/config.cfg"
+const ConfigPath = "config.cfg"
 
 var ServiceConfig *Config
 
