@@ -22,11 +22,6 @@
 			"Rev": "a2610b3a793cfa7fdf0b07038068af5ddc12aba1"
 		},
 		{
-			"ImportPath": "github.com/gotravelydia/context",
-			"Comment": "v1.1-7-g08b5f42",
-			"Rev": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42"
-		},
-		{
 			"ImportPath": "github.com/gotravelydia/mux",
 			"Comment": "v1.1-27-g5da2fbd",
 			"Rev": "5da2fbd8802081f3711812cabcbd76922f29b51d"
