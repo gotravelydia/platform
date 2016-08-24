@@ -10,5 +10,8 @@ deploy-prod:
 	eb deploy --verbose --timeout 20 platform-prod
 
 deploy-staging:
+	git add .cfg/config.cfg
+	git commit -a -m 'Deploy'
 	eb use platform-staging
 	eb deploy -v --timeout 20 platform-staging
+	git reset --hard HEAD~1
